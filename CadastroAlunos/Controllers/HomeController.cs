@@ -6,6 +6,7 @@ namespace CadastroAluno.Controllers
     {
         public IActionResult Index()
         {
+            ViewBag.Titulo = "Home";
             return View();
         }
     }
