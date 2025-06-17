@@ -3,10 +3,10 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CadastroAlunos.Data
 {
-    public class CadastroAlunosDBContext : DbContext
+    public class ControleAlunosDBContext : DbContext
     {
-        public CadastroAlunosDBContext(
-              DbContextOptions<CadastroAlunosDBContext> options) : base(options)
+        public ControleAlunosDBContext(
+              DbContextOptions<ControleAlunosDBContext> options) : base(options)
         {
             
         }

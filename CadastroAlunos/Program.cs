@@ -10,7 +10,7 @@ builder.Services.AddControllersWithViews();
 
 //Cria a conexão com o banco de dados. Neste caso, utilizando
 //o banco de dados SQLite.
-builder.Services.AddDbContext<CadastroAlunosDBContext>(
+builder.Services.AddDbContext<ControleAlunosDBContext>(
     options => options.UseSqlite("Data source=cadastroalunos.db" ) );
 
 var app = builder.Build();

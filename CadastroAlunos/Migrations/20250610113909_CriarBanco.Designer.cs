@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CadastroAlunos.Migrations
 {
-    [DbContext(typeof(CadastroAlunosDBContext))]
+    [DbContext(typeof(ControleAlunosDBContext))]
     [Migration("20250610113909_CriarBanco")]
     partial class CriarBanco
     {

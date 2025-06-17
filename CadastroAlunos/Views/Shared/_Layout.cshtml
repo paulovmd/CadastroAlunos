@@ -157,9 +157,12 @@
           <h1 class="h2">@ViewBag.Titulo</h1>
           <div class="btn-toolbar mb-2 mb-md-0"></div>
             <div class="btn-group mr-2">
-              
-            <a name="" id="" class="btn btn-primary" href="@ViewBag.LinkAcao" role="button">Adicionar</a>
-        
+              @{          
+                  if  (!string.IsNullOrEmpty(ViewBag.LinkAcao)){
+                     <a name="" id="" class="btn btn-primary"
+                         href="@ViewBag.LinkAcao" role="button">Adicionar</a>
+                  }
+              }
             </div>          
           </div>
         
