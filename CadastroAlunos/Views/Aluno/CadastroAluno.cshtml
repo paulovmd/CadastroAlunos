@@ -1,5 +1,9 @@
 @{
     Layout = "_Layout";
+    /*Definindo qual entidade será utilizada no formulário
+    de cadastro para vincular os campos do formulário a cada
+    atributo da entidade */
+    @model CadastroAlunos.Models.Aluno
 }
 <div class="container">
      <form action="IncluirAluno" method="post">
@@ -11,27 +15,24 @@
             <!--inicio class col --> 
             <div class="col-10">
                 <!--inicio class row --> 
+                <!--Nas tags label e input DEVEMOS incluir a atributo
+                 asp-for. Esse atributo permite associar o campo da tabela
+                 do banco de dados aos campos do formulário HTML.-->
                 <div class="row">           
                         <div class="col">
-                            <label for="" class="form-label">Nome</label>
+                            <label asp-for="Nome" class="form-label">Nome</label>
                             <input
                                 type="text"
-                                class="form-control"
-                                name=""
-                                id=""
-                                aria-describedby="helpId"
-                                placeholder=""
+                                class="form-control"                                
+                                asp-for="Nome"                                 
                             />                            
                         </div>                       
                         <div class="col-5">
-                            <label for="" class="form-label">CPF</label>
+                            <label asp-for="Cpf" class="form-label">CPF</label>
                             <input
                                 type="text"
                                 class="form-control"
-                                name=""
-                                id=""
-                                aria-describedby="helpId"
-                                placeholder=""
+                                asp-for="Cpf"
                             />                            
                         </div>  
                 </div>                
@@ -40,18 +41,32 @@
                 <!-- #inicio class row-->
                 <div class="row">                    
                     
-                    <div class="mb-3">
-                        <label for="" class="form-label">Endereço</label>
+                    <div class="col">
+                        <label asp-for="Endereco" class="form-label">Endereço</label>
                         <input
                             type="text"
                             class="form-control"
-                            name=""
-                            id=""
-                            aria-describedby="helpId"
-                            placeholder=""
+                            asp-for="Endereco"
                         />                                                
-                    </div>
-                    
+                    </div>                    
+
+                    <div class="col-2">
+                        <label asp-for="Cep" class="form-label">CEP</label>
+                        <input
+                            type="text"
+                            class="form-control"
+                            asp-for="Cep"
+                        />                                                
+                    </div> 
+
+                    <div class="col-1">
+                        <label asp-for="Numero" class="form-label">Número</label>
+                        <input
+                            type="text"
+                            class="form-control"
+                            asp-for="Numero"
+                        />                                                
+                    </div> 
 
                 </div>
                 <!-- #fim class row-->
@@ -60,38 +75,29 @@
                 <div class="row">
 
                     <div class="col">
-                        <label for="" class="form-label">Bairro</label>
+                        <label asp-for="Bairro" class="form-label">Bairro</label>
                         <input
                             type="text"
                             class="form-control"
-                            name=""
-                            id=""
-                            aria-describedby="helpId"
-                            placeholder=""
+                            asp-for="Bairro"                       
                         />                        
                     </div>
 
                     <div class="col">
-                        <label for="" class="form-label">Cidade</label>
+                        <label asp-for="Cidade" class="form-label">Cidade</label>
                         <input
                             type="text"
                             class="form-control"
-                            name=""
-                            id=""
-                            aria-describedby="helpId"
-                            placeholder=""
+                            asp-for="Cidade"                        
                         />                        
                     </div>
 
                     <div class="col">
-                        <label for="" class="form-label">Estado</label>
+                        <label asp-for="Estado" class="form-label">Estado</label>
                         <input
                             type="text"
                             class="form-control"
-                            name=""
-                            id=""
-                            aria-describedby="helpId"
-                            placeholder=""
+                            asp-for="Estado"                           
                         />                        
                     </div>
 
