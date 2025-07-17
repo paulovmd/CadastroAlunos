@@ -2,6 +2,7 @@
 using CadastroAlunos.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -9,9 +10,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CadastroAlunos.Migrations
 {
     [DbContext(typeof(ControleAlunosDBContext))]
-    partial class CadastroAlunosDBContextModelSnapshot : ModelSnapshot
+    [Migration("20250717130131_UpdateV5")]
+    partial class UpdateV5
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "9.0.5");
@@ -72,49 +75,6 @@ namespace CadastroAlunos.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Cursos");
-                });
-
-            modelBuilder.Entity("CadastroAlunos.Models.NotaAluno", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("IdAluno")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("IdCurso")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<decimal>("Nota")
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("IdAluno");
-
-                    b.HasIndex("IdCurso");
-
-                    b.ToTable("NotaAlunos");
-                });
-
-            modelBuilder.Entity("CadastroAlunos.Models.NotaAluno", b =>
-                {
-                    b.HasOne("CadastroAlunos.Models.Aluno", "Aluno")
-                        .WithMany()
-                        .HasForeignKey("IdAluno")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("CadastroAlunos.Models.Curso", "Curso")
-                        .WithMany()
-                        .HasForeignKey("IdCurso")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Aluno");
-
-                    b.Navigation("Curso");
                 });
 #pragma warning restore 612, 618
         }

@@ -34,16 +34,21 @@ namespace CadastroAlunos.Controllers
         */
         public IActionResult CadastroAluno()
         {
+            /*O ViewBag é um recurso do Asp.net Core utilizado para declarar variáveis
+            que precisam ser utilizadas entre o Código C# e as páginas cshtml. Desta forma,
+            ao declarar a variável no código C# podemos utilizar elas nas páginas da aplicação.*/
             ViewBag.Titulo = "Cadastro de Alunos";
+            ViewBag.Acao = "IncluirAluno";
             return View();
         }
 
-        /*Método Responsável por incluir um novo Aluno.
-        Esse método utiliza o verbo POST para enviar os dados
-        do formulário de cadastro e redireciona para o página
+        /*Método Responsável por incluir um novo Aluno. Esse método utiliza o verbo POST 
+        para enviar os dadosdo formulário de cadastro e redireciona para o página
         principal após ser realizado.*/
+        /*Todo parâmetro que for uma entidade DEVE ser marcado antes do tipo com
+        o [FromForm] para informar que os dados serão passados através de um formulário.*/
         [HttpPost]    
-        public IActionResult IncluirAluno(Aluno aluno)
+        public IActionResult IncluirAluno([FromForm]Aluno aluno)
         {   
             //Redireciona para o página Index da área do Cadastro de Alunos
             return View("Index");
