@@ -39,7 +39,10 @@ namespace CadastroAlunos.Controllers
             ao declarar a variável no código C# podemos utilizar elas nas páginas da aplicação.*/
             ViewBag.Titulo = "Cadastro de Alunos";
             ViewBag.Acao = "IncluirAluno";
-            return View();
+            /*Ao chamar o formulário de cadastro, é preciso passar uma 
+            instância vazia da entidade que se esta realizando cadastro.
+            */
+            return View(new Aluno());
         }
 
         /*Método Responsável por incluir um novo Aluno. Esse método utiliza o verbo POST 
@@ -49,9 +52,23 @@ namespace CadastroAlunos.Controllers
         o [FromForm] para informar que os dados serão passados através de um formulário.*/
         [HttpPost]    
         public IActionResult IncluirAluno([FromForm]Aluno aluno)
-        {   
+        {
+            ViewBag.Titulo = "Cadastro de Alunos";
+            ViewBag.Acao = "IncluirAluno";
+
+            //Valida se houve falha ao enviar os dados do formulário
+            if (!ModelState.IsValid)
+            {   //Se houve alguma falha retorna para página
+                //de cadastro
+                return View("CadastroAluno", aluno);
+            }
+
+            //Salva os dados na base de dados
+            cadastroAlunosDBContext.Add(aluno);
+            cadastroAlunosDBContext.SaveChanges();
+
             //Redireciona para o página Index da área do Cadastro de Alunos
-            return View("Index");
+            return RedirectToAction("Index");
         }
         
 

@@ -6,7 +6,15 @@
     @model Aluno
 }
 <div class="container">
-     <form action="IncluirAluno" method="post">
+     <!-- Diferente do form padrão, com ASP.NET utilizamos o 
+     asp-action, pois esse parâmetro possui uma integração melhor com a
+     plataforma Asp.NET, vinculando mais facilmente as ações. -->       
+     <form asp-action="@ViewBag.Acao" method="post">
+            <!-- Seção responsável por lista e exibir os possíveis
+            erros do formulário, se houver e também por ativar as validações
+            dos campos no formulário HTML. -->
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+           
             <button type="submit"class="btn btn-primary">
                 Salvar
             </button>                   
@@ -18,22 +26,32 @@
                 <!--Nas tags label e input DEVEMOS incluir a atributo
                  asp-for. Esse atributo permite associar o campo da tabela
                  do banco de dados aos campos do formulário HTML.-->
-                <div class="row">           
+                <div class="row">    
+
+                        <!-- Esse campo é oculto, é utilizado apenas para 
+                        armazenar o ID da entidade para realizar edições.-->
+                        <input type="hidden" asp-for="Id"/>
+
                         <div class="col">
                             <label asp-for="Nome" class="form-label">Nome</label>
                             <input
                                 type="text"
                                 class="form-control"                                
                                 asp-for="Nome"                                 
-                            />                            
-                        </div>                       
+                            />
+                           <!-- Exibe a informação de erro de validação no campo--> 
+                           <span asp-validation-for="Nome" class="text-danger">*</span>                                          
+                        </div>   
+
+
                         <div class="col-5">
                             <label asp-for="Cpf" class="form-label">CPF</label>
                             <input
                                 type="text"
                                 class="form-control"
                                 asp-for="Cpf"
-                            />                            
+                            />    
+                            <span asp-validation-for="Cpf" class="text-danger">*</span>                         
                         </div>  
                 </div>                
                 <!-- #fim class row-->
@@ -47,7 +65,8 @@
                             type="text"
                             class="form-control"
                             asp-for="Endereco"
-                        />                                                
+                        />  
+                        <span asp-validation-for="Endereco" class="text-danger">*</span>                                              
                     </div>                    
 
                     <div class="col-2">
@@ -56,7 +75,8 @@
                             type="text"
                             class="form-control"
                             asp-for="Cep"
-                        />                                                
+                        />  
+                        <span asp-validation-for="Cep" class="text-danger">*</span>                                               
                     </div> 
 
                     <div class="col-1">
@@ -65,7 +85,8 @@
                             type="text"
                             class="form-control"
                             asp-for="Numero"
-                        />                                                
+                        /> 
+                        <span asp-validation-for="Numero" class="text-danger">*</span>                                                
                     </div> 
 
                 </div>
@@ -80,7 +101,8 @@
                             type="text"
                             class="form-control"
                             asp-for="Bairro"                       
-                        />                        
+                        />    
+                        <span asp-validation-for="Bairro" class="text-danger">*</span>                    
                     </div>
 
                     <div class="col">
@@ -89,7 +111,8 @@
                             type="text"
                             class="form-control"
                             asp-for="Cidade"                        
-                        />                        
+                        /> 
+                        <span asp-validation-for="Cidade" class="text-danger">*</span>                        
                     </div>
 
                     <div class="col">
@@ -98,7 +121,8 @@
                             type="text"
                             class="form-control"
                             asp-for="Estado"                           
-                        />                        
+                        />
+                        <span asp-validation-for="Estado" class="text-danger">*</span>                         
                     </div>
 
                 </div>
